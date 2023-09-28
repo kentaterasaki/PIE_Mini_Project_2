@@ -48,6 +48,9 @@ void loop() {
   servo_down.write(val0);               // sets the servo position according to the scaled value
   servo_up.write(val1);                          // waits for the servo to get there read the analog in value:
   sensorValue2 = analogRead(analogInPin);
+
+  Serial.print(sensorValue2);
+  Serial.print(" ");
   // map it to the range of the analog out:
   // Serial.println(sensorValue2);
   outputValue = map(sensorValue2, 0, 1023, 0, 255);
@@ -58,18 +61,6 @@ void loop() {
   y = 12224*pow(sensorValue2,-1.017);
   Serial.println(y);
   analogWrite(analogOutPin, outputValue);
-  // print the results to the Serial Monitor:
-  // Serial.print("sensor = ");
-  // Serial.print(sensorValue2);
-  // Serial.print("\t output = ");
-  //  Serial.print(val0);
-  //  Serial.print(" ");
-  //  Serial.print(val1);
-  // Serial.print("output value");
-  // Serial.println(outputValue);
-  // Serial.println(sensorToCm(sensorValue2));
-  // wait 2 milliseconds before the next loop for the analog-to-digital
-  // converter to settle after the last reading:
   delay(1000);
 
 }
